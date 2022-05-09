@@ -47,8 +47,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 }
 
 .btn:hover {
-  background-color: black;
-  color: white;
+  background-color: chartreuse;
+  color: black;
 }
 </style>
 </head>
@@ -58,7 +58,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-calculator w3-xxlarge"></i>
+    <em class="fa fa-calculator w3-xxlarge" style="color: chartreuse;"></em>
     <p>HOME</p>
   </a>
 </nav>
@@ -75,17 +75,19 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small">Calculadora</span> Solución Óptima</h1>
-    <p>Esteban Samayoa, Marcela Melgar</p>
+    <p style="color:chartreuse;">Esteban Samayoa, Marcela Melgar</p>
   </header>
 
     <!-- Method Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-        <h2 class="w3-text-light-grey">Selecciona el Método</h2>
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="method">
+        <h2 style="color: chartreuse;">Selecciona el Método</h2>
         <hr style="width:200px" class="w3-opacity">
         <div class="card">
             <div style="position: static;">
                 <br>
                 <form>
+                  <h4>Seleccione el método a utilizar:</h4>
+                  <center>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="Dual" id="Dual" value="Dual">
                         <label class="form-check-label" for="Dual">
@@ -98,30 +100,49 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
                           Big M
                         </label>
                     </div>
+                  </center>
+                    <br>
+                    <h4>Seleccione la  optimización a realizar:</h4>
+                  <center>
+                    <div class="form-group">
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Maximización</option>
+                        <option>Minimización</option>
+                      </select>
+                    </div>
+                  </center>
                 </form>
                 <br>
-                <button class="btn" id="metodo">Seleccionar</button>
+                <center>
+                <button class="btn" id="metodo">Fijar</button>
+                </center>
             </div>
         </div>
         <br>
     </div>
 
     <!-- Variables y Restricciones Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-        <h2 class="w3-text-light-grey">Cantidad de Variables y Restricciones</h2>
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="varres">
+        <h2 style="color: chartreuse;">Cantidad de Variables y Restricciones</h2>
         <hr style="width:200px" class="w3-opacity">
         <div class="card">
             <div style="position: static;">
                 <br>
                 <form>
                     <div class="row">
+                      <h4>Ingrese cantidad de variables:</h4>
+                      <center>
                         <div class="col">
                           <input type="number" class="form-control" placeholder="Variables">
                         </div>
+                      </center>
                         <br>
+                      <h4>Ingrese cantidad de restricciones:</h4>
+                      <center>
                         <div class="col">
                           <input type="number" class="form-control" placeholder="Restricciones">
                         </div>
+                      </center>
                     </div>
                 </form>
                 <br>
