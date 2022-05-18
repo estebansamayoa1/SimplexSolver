@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="English">
+  <head>
+    <title>Online Solver MM_ES</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+
+    .w3-sidebar {width: 120px;background: #222;}
+
+    #main {margin-left: 120px}
+
+    .card {
+      padding: 10px;
+      width: 75%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      background-color: darkgray;
+      box-shadow: 0 0 8px 0px rgb(170 167 167);
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 25px;
+      color: black
+    }
+
+    .btn {
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: center;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      background-color: #403d39;
+      color: white;
+      border: 2px solid #403d39;
+    }
+
+    .btn:hover {
+      background-color: chartreuse;
+      color: black;
+    }
+
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #403d39;
+    color: #dddddd;
+    }
+    </style>
+  </head>
+    <body class="w3-black">
+
+        <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <em class="fa fa-calculator w3-xxlarge" style="color: chartreuse;"></em>
+            <p>HOME</p>
+        </a>
+        </nav>
+
+        <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+        <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+            <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+        </div>
+        </div>
+
+
+        <div class="w3-padding-large" id="main">
+
+            <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+                <h1 class="w3-jumbo"><span class="w3-hide-small">Calculadora</span> Solución Óptima</h1>
+                <p style="color:chartreuse;">Esteban Samayoa, Marcela Melgar</p>
+            </header>
+
+                
+            <table>
+                {% for i in matrizfinal %}
+                <tr>
+                {% for j in i %}
+                <td>{{j}}</td>
+                {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+
+            <div class="card">
+                <h3 style="color: chartreuse;">Valor Optimizado: {{val}}</h3><br>
+            </div>
+            <div class="card">
+                <ol>
+                {% for i in soluciones%}
+                <h3 style="color: chartreuse;"><li>X = {{i}}</li></h3>
+                {% endfor %}
+                </ol>
+            </div>
+        
+
+        </div>
+
+    </body>
+</html>

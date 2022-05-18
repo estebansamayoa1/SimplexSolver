@@ -136,25 +136,12 @@
               suma.innerHTML = "+";
               rowfinal.append(suma);
             }
-            if(a==variables){
-              //Create array of options to be added
-              var array = ["≥","≤","="];
-              //Create and append select list
-              var selectList = document.createElement("select");
-              selectList.name = "objetivo";
-              for (var k = 0; k < array.length; k++) {
-                var option = document.createElement("option");
-                option.value = k;
-                option.text = array[k];
-                selectList.appendChild(option);
-              }
-              let signos2 = document.createElement('td');
-              signos2.append(selectList);
-              rowfinal.append(signos2);
-            }
             let input_ = document.createElement('input');
             input_.setAttribute("size","2px;2px");
             input_.setAttribute("id",j);
+            if (a==variables){
+              input_.value=0
+            }
             input_.name=j; 
             row_data.append(input_);
             rowfinal.append(row_data);
@@ -255,9 +242,6 @@
                       <center>
                       <h3 style="color: chartreuse;">Dual Simplex</h3>
                       </center>
-                        <h4>Seleccione la  optimización a realizar:</h4>
-                      <center>
-                      </center>
                       <br>
                       <div class="row">
                         <h4>Ingrese cantidad de variables:</h4>
@@ -292,7 +276,6 @@
             </div>
             <br>
         </div>
-
     </div>
 
   </body>
