@@ -1,5 +1,6 @@
 # SimplexSolver
-### Esteban Samayoa, Marcela Melgar
+##### Esteban Samayoa, 20200188
+##### Marcela Melgar, 20200487
 
 ## Problemática a Resolver
 Uno de los problemas principales que las empresas enfrentan actualmente es el de la toma de decisiones sobre cuántos productos manufacturar respecto a los insumos que poseen, buscando siempre maximizar su utilidad o ya bien, minimizar sus gastos. Por lo que es importante que cuenten con las herramientas adecuadas y confiables para poder realizar dichos cálculos.
