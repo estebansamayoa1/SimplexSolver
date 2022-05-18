@@ -55,8 +55,6 @@
         variables=document.getElementById('variables').value;
         constraints=document.getElementById('restricciones').value;
         var select = document.getElementById('metodoausar');
-        var maxiomini = select.options[select.selectedIndex].value;
-        console.log(maxiomini)
         let table1 = document.createElement('table');
         let thead1 = document.createElement('thead');
         let tbody1 = document.createElement('tbody');
@@ -103,8 +101,7 @@
             }
             let input_ = document.createElement('input');
             input_.setAttribute("size","2px;2px");
-            input_.setAttribute("id",j+""+i);
-            input_.name=j+""+i;
+            input_.name=j;
             row_data.append(input_)
             row.append(row_data);
           }
@@ -127,8 +124,7 @@
           row.append(signos);
           let input_ = document.createElement('input');
           input_.setAttribute("size","2px;2px");
-          input_.setAttribute("id","R"+j);
-          input_.name="R"+j;
+          input_.name=j;
           row.append(input_);
           tbody1.appendChild(row);
         }
@@ -158,9 +154,9 @@
             }
             let input_ = document.createElement('input');
             input_.setAttribute("size","2px;2px");
-            input_.setAttribute("id",j+""+i);
-            input_.name=j+""+i;
-            row_data.append(input_)
+            input_.setAttribute("id",j);
+            input_.name=j; 
+            row_data.append(input_);
             rowfinal.append(row_data);
             table2.append(rowfinal);
         }
@@ -197,7 +193,18 @@
         }
         table3.append(rowsignos);
         formnumeros.append(table3);
-
+        var metodos=["Maximizar", "Minimizar"]
+        var selectmethod = document.createElement("select");
+        selectmethod.name = "metodo";
+        for (var k = 0; k < metodos.length; k++) {
+          var option = document.createElement("option");
+          option.value = metodos[k];
+          option.text = metodos[k];
+          selectmethod.appendChild(option);
+        }
+        formnumeros.append(selectmethod);
+        var x = document.createElement("BR");
+        formnumeros.append(x);
         let buttonfinal=document.createElement('button');
         buttonfinal.type="submit";
         buttonfinal.innerHTML="Solve the Problem!";
@@ -250,12 +257,6 @@
                       </center>
                         <h4>Seleccione la  optimización a realizar:</h4>
                       <center>
-                        <div class="form-group">
-                          <select class="form-control" id="metodoausar">
-                            <option name="maxi">Maximización</option>
-                            <option name="mini">Minimización</option>
-                          </select>
-                        </div>
                       </center>
                       <br>
                       <div class="row">
