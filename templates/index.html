@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="English">
   <head>
-    <title>W3.CSS Template</title>
+    <title>Online Solver MM_ES</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -49,6 +49,170 @@
       color: black;
     }
     </style>
+    <script type="text/javascript">
+      function CrearMatriz(){
+        document.getElementById('varres').innerHTML="";
+        variables=document.getElementById('variables').value;
+        constraints=document.getElementById('restricciones').value;
+        var select = document.getElementById('metodoausar');
+        var maxiomini = select.options[select.selectedIndex].value;
+        console.log(maxiomini)
+        let table1 = document.createElement('table');
+        let thead1 = document.createElement('thead');
+        let tbody1 = document.createElement('tbody');
+        let table2 = document.createElement('table');
+        let thead2 = document.createElement('thead');
+        let tbody2 = document.createElement('tbody');
+
+        table1.appendChild(thead1);
+        table1.appendChild(tbody1);
+
+        table2.appendChild(thead2);
+        table2.appendChild(tbody2);
+
+        let row_restricciones2= document.createElement('caption');
+        let titulo2= document.createElement('h6');
+        titulo2.innerHTML="FUNCIÓN OBJETIVO";
+        row_restricciones2.append(titulo2);
+        table2.append(row_restricciones2);
+
+        let row_restricciones= document.createElement('caption');
+        let titulo= document.createElement('h6');
+        titulo.innerHTML="RESTRICCIONES";
+        row_restricciones.append(titulo);
+        table1.append(row_restricciones);
+        let row_titles = document.createElement('tr');
+        for(i=0;i<variables;i++){
+          let heading = document.createElement('th');
+          let espacio = document.createElement('th');
+          espacio.html="";
+          heading.innerHTML = " X"+String(i+1)+"";
+          row_titles.append(heading);
+          row_titles.append(espacio);
+          row_titles.append(espacio);
+        }
+        for(j=0;j<constraints;j++){
+          let row = document.createElement('tr');
+          for(i=0;i<variables;i++){
+            // // Creating and adding data to second row of the table1
+            let row_data = document.createElement('td');
+            let suma = document.createElement('td');
+            if(i>0){
+              suma.innerHTML = "+";
+              row.append(suma);
+            }
+            let input_ = document.createElement('input');
+            input_.setAttribute("size","2px;2px");
+            input_.setAttribute("id",j+""+i);
+            input_.name=j+""+i;
+            row_data.append(input_)
+            row.append(row_data);
+          }
+          //Create array of options to be added
+          var array = ["≥","≤","="];
+
+          //Create and append select list
+          var selectList = document.createElement("select");
+          selectList.name = "restricciones";
+
+          //Create and append the options
+          for (var k = 0; k < array.length; k++) {
+              var option = document.createElement("option");
+              option.value = k;
+              option.text = array[k];
+              selectList.appendChild(option);
+          }
+          let signos = document.createElement('td');
+          signos.append(selectList);
+          row.append(signos);
+          let input_ = document.createElement('input');
+          input_.setAttribute("size","2px;2px");
+          input_.setAttribute("id","R"+j);
+          input_.name="R"+j;
+          row.append(input_);
+          tbody1.appendChild(row);
+        }
+        let rowfinal = document.createElement('tr');
+        for(a=0;a<=variables;a++){
+          let row_data = document.createElement('td');
+          let suma = document.createElement('td');
+            if(a>0 && a<variables){
+              suma.innerHTML = "+";
+              rowfinal.append(suma);
+            }
+            if(a==variables){
+              //Create array of options to be added
+              var array = ["≥","≤","="];
+              //Create and append select list
+              var selectList = document.createElement("select");
+              selectList.name = "objetivo";
+              for (var k = 0; k < array.length; k++) {
+                var option = document.createElement("option");
+                option.value = k;
+                option.text = array[k];
+                selectList.appendChild(option);
+              }
+              let signos2 = document.createElement('td');
+              signos2.append(selectList);
+              rowfinal.append(signos2);
+            }
+            let input_ = document.createElement('input');
+            input_.setAttribute("size","2px;2px");
+            input_.setAttribute("id",j+""+i);
+            input_.name=j+""+i;
+            row_data.append(input_)
+            rowfinal.append(row_data);
+            table2.append(rowfinal);
+        }
+        thead1.append(row_titles);
+        let formnumeros=document.createElement('form');
+        formnumeros.id="matriznumeros";
+        formnumeros.name="matriznumeros";
+        formnumeros.append(table1);
+        formnumeros.append(table2);
+        let table3 = document.createElement('table');
+        let thead3 = document.createElement('thead');
+        let tbody3 = document.createElement('tbody');
+        table3.appendChild(thead3);
+        table3.appendChild(tbody3); 
+        let row_signos= document.createElement('caption');
+        let titulo3= document.createElement('h6');
+        titulo3.innerHTML="SIGNOS ABAJO";
+        row_signos.append(titulo3);
+        table3.append(row_signos);
+        let rowsignos=document.createElement("tr");
+        for(b=0;b<variables;b++){
+          let signos2 = document.createElement('td');
+          var array = ["≥","≤","="];
+          var selectList = document.createElement("select");
+          selectList.name = "nuevas";
+          for (var k = 0; k < array.length; k++) {
+            var option = document.createElement("option");
+            option.value = k;
+            option.text = array[k];
+            selectList.appendChild(option);
+          }
+          signos2.append(selectList);
+          rowsignos.append(signos2);
+        }
+        table3.append(rowsignos);
+        formnumeros.append(table3);
+
+        let buttonfinal=document.createElement('button');
+        buttonfinal.type="submit";
+        buttonfinal.innerHTML="Solve the Problem!";
+        formnumeros.appendChild(buttonfinal);
+        document.getElementById('varres').appendChild(formnumeros);
+      }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).on('submit', '#rest', function (e) {
+            e.preventDefault();
+        });
+    </script>
   </head>
   <body class="w3-black">
 
@@ -80,16 +244,16 @@
             <div class="card">
                 <div style="position: static;">
                     <br>
-                    <form>
+                    <form id="rest">
                       <center>
                       <h3 style="color: chartreuse;">Dual Simplex</h3>
                       </center>
                         <h4>Seleccione la  optimización a realizar:</h4>
                       <center>
                         <div class="form-group">
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Maximización</option>
-                            <option>Minimización</option>
+                          <select class="form-control" id="metodoausar">
+                            <option name="maxi">Maximización</option>
+                            <option name="mini">Minimización</option>
                           </select>
                         </div>
                       </center>
@@ -98,19 +262,19 @@
                         <h4>Ingrese cantidad de variables:</h4>
                         <center>
                           <div class="col">
-                            <input type="number" class="form-control" placeholder="Variables">
+                            <input type="number" class="form-control" placeholder="Variables" id="variables" name="variables">
                           </div>
                         </center>
                           <br>
                         <h4>Ingrese cantidad de restricciones:</h4>
                         <center>
                           <div class="col">
-                            <input type="number" class="form-control" placeholder="Restricciones">
+                            <input type="number" class="form-control" placeholder="Restricciones" id="restricciones" name="restricciones">
                           </div>
                         </center>
                       </div><br>
                       <center>
-                        <button type="submit" class="btn" id="metodo">Fijar</button>
+                        <button class="btn" id="metodo" onclick="CrearMatriz()" type="submit">Fijar</button>
                       </center>
                     </form>
                     <br>
@@ -119,18 +283,14 @@
             <br>
         </div>
 
-        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="varres">
+        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="xs">
             <h2 style="color: chartreuse;">Coeficientes y Desigualdades</h2>
             <hr style="width:200px" class="w3-opacity">
-            <div class="card">
-                
+            <div class="card" id="varres">
+    
             </div>
             <br>
         </div>
-      
-      <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-      </footer>
 
     </div>
 
